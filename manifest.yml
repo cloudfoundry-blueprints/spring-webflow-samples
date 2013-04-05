@@ -1,0 +1,20 @@
+---
+blueprint:
+  name: "Spring Travel"
+  description: "This sample demonstrates how to use Spring MVC and Spring Web Flow together with Thymeleaf and Tiles. Uses a MySQL database."
+  imageURL: "https://raw.github.com/cloudfoundry-blueprints/spring-webflow-samples/master/image.png"
+  browseURL: "https://github.com/cloudfoundry-blueprints/spring-webflow-samples"
+  buildInstructions: "cd booking-mvc\nmvn package"
+applications:
+- name: spring-travel
+  framework: spring
+  runtime: java
+  memory: 512M
+  instances: 1
+  url: spring-travel-eric.${target-base}
+  path: booking-mvc/target/booking-mvc.war
+  services:
+    spring-travel-mysql:
+      vendor: mysql
+      version: '5.1'
+      tier: free
